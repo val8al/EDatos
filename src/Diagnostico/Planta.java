@@ -1,3 +1,9 @@
+/*
+Autores:
+Gerardo López Chacón
+Valentín Ochoa López
+
+ [*/
 package Diagnostico;
 public abstract class Planta extends Empleado {
 
@@ -62,19 +68,16 @@ public abstract class Planta extends Empleado {
                     switch(i){
                         case 0: case 6: case 7:
                             if(this.prestaciones[i]){
-                                //System.out.println(this.apellido+PAGO_PRESTACIONES[i]);
                                 sueldito=sueldito+PAGO_PRESTACIONES[i];
                                 break;
                             }
                         case 1: case 2: case 5:
-                            if(this.prestaciones[i]){
-                                //System.out.println(this.apellido+PAGO_PRESTACIONES[i]);
+                            if(this.prestaciones[i]){                              
                                 sueldito=sueldito+(PAGO_PRESTACIONES[i]*this.pagoSemanal);
                                 break;
                             }
                         case 3: case 4:
-                            if(this.prestaciones[i]){
-                                //ystem.out.println(this.apellido+PAGO_PRESTACIONES[i]);
+                            if(this.prestaciones[i]){                               
                                 sueldito=sueldito+(PAGO_PRESTACIONES[i]*this.diaVacaciones);
                                 break;
                             }
