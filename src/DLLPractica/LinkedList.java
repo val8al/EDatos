@@ -277,8 +277,8 @@ public class LinkedList<E> implements List<E> {
             while(this.size()!=1){
                 
                 for(int i=pasos;i!=0;i--){
-                    if(current==header){
-                        i++;
+                    if(current.next==header){
+                        current=current.next;
                     }
                     current=current.next;
                     

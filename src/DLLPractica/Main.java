@@ -7,13 +7,13 @@ package DLLPractica;
 public class Main {
 
 	public static void main(String[] args) {
-		System.out.println("** TEST CIRCULAR DOUBLY-LINKEDLIST CLASS **");
-		System.out.println("\t** USING INTEGERS **");
+		System.out.println("** TEST JOSEPHUS() **");
+		
 		LinkedList<Integer> iList = new LinkedList<Integer>();
 		
-		System.out.println("Testing: addFirst(i | i >= 0 && i < 10) + toString");
+		
 		System.out.println(iList);
-		for(int i = 0; i < 40; i++) {
+		for(int i = 0; i < 10; i++) {
 			iList.addFirst(i);
 		}
                 System.out.println(iList);
