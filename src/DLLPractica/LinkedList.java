@@ -246,10 +246,8 @@ public class LinkedList<E> implements List<E> {
 	@Override
 	public boolean isEmpty() {
 		// TODO Auto-generated method stub
-            if(header.next==header&&header.prev==header){
-		return true;
-            }
-            return false;
+            return header.next==header&&header.prev==header;
+	
 	}
 
 	@Override
@@ -273,4 +271,26 @@ public class LinkedList<E> implements List<E> {
             
 		return s;
 	}
+         public E josephus(int pasos){
+            
+            Node<E> current=header;
+            while(this.size()!=1){
+                
+                for(int i=pasos;i!=0;i--){
+                    if(current==header){
+                        i++;
+                    }
+                    current=current.next;
+                    
+                }
+                if(current.next==header){
+                    current=current.next;
+                    
+                }
+                System.out.println(current.next.value);
+                this.remove(current.next.value);
+                System.out.println(this.toString());
+            }
+            return current.value;
+        }
 }

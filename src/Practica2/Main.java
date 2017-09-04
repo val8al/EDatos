@@ -66,7 +66,7 @@ public class Main {
                 
                 
                 
-                System.out.println("HEHEH XDDDD"+iList.remove(new Integer(6)));
+              
 		
 		System.out.println("Testing: size + indexOf + get");
 		for(int i=0; i<iList.size(); i++) {
