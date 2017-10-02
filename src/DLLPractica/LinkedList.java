@@ -28,21 +28,22 @@ public class LinkedList<E> implements List<E> {
 	 * @throws IndexOutOfBoundsException if the index is out of range (index < 0 || index >= size())
 	 */
 	private Node<E> node(int index) {
-		if(index < 0 || index >= size()) {
+            if(index < 0 || index >= size()) {
 			throw new IndexOutOfBoundsException();
 		}
 		
-		if (index < (size >> 1)) {
-            Node<E> x = header.next;
-            for (int i = 0; i < index; i++)
-                x = x.next;
-            return x;
-        } else {
-            Node<E> x = header.prev;
-            for (int i = size - 1; i > index; i--)
-                x = x.prev;
-            return x;
-        }
+            if (index < (size >> 1)) {
+                Node<E> x = header.next;
+                for (int i = 0; i < index; i++)
+                    x = x.next;
+                    return x;
+            }
+            else {
+                Node<E> x = header.prev;
+                for (int i = size - 1; i > index; i--)
+                    x = x.prev;
+                return x;
+            }
 	}
 
 	@Override
