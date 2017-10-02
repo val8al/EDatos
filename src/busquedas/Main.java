@@ -20,7 +20,7 @@ public class Main {
     public static int linearSearch(int[] list,int target){
         for(int i=0;i<list.length;i++){
             if(list[i]==target){
-                return 1;
+                return i;
             }
             if(list[i]>target){
                 return -1;
@@ -36,10 +36,10 @@ public class Main {
         
         while(min<=max){
             int mid=(min+max)/2;
-            if(target>arr[mid]){
+            if(target<arr[mid]){
                 max=mid-1;
             }
-            if(target>arr[mid]){
+            else if(target>arr[mid]){
                 min=mid+1;
             }
             else{
