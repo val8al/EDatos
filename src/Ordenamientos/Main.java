@@ -16,6 +16,7 @@ public class Main {
         //System.out.println(Arrays.toString(shiftRight(arreglo,2,5)));
         selectionSort(arreglo);
         insertionSort(arreglo);
+        bubbleSort(arreglo);
         
     }
     public static int[] shiftRight(int[] arr, int start, int end){
@@ -61,7 +62,22 @@ public class Main {
         
         
     }
-    
+    public static void bubbleSort(int[] arr){
+        boolean not_sorted=true;
+        int holder;
+        while(not_sorted){
+            for(int i=1;i<arr.length-1;i++){
+                if(arr[i]<arr[i-1]){
+                   holder=arr[i];
+                   arr[i]=arr[i-1];
+                   arr[i-1]=holder;
+                   not_sorted=true;
+                }
+            }
+            not_sorted=false;
+        }
+        System.out.println(Arrays.toString(arr));
+    }
     
     
     
