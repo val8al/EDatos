@@ -12,11 +12,13 @@ import java.util.Arrays;
  */
 public class Main {
     public static void main(String[] args){
-        int[] arreglo={2,7,8,9,420,15,11,14};
+        int[] arreglo={9,1,2,0,3,4,5,8,6,7};
         //System.out.println(Arrays.toString(shiftRight(arreglo,2,5)));
-        selectionSort(arreglo);
-        insertionSort(arreglo);
-        bubbleSort(arreglo);
+        //selectionSort(arreglo);
+        //insertionSort(arreglo);
+        //bubbleSort(arreglo);
+        //makeHeap(arreglo);
+        heapSort(arreglo);
         
     }
     public static int[] shiftRight(int[] arr, int start, int end){
@@ -77,6 +79,73 @@ public class Main {
             not_sorted=false;
         }
         System.out.println(Arrays.toString(arr));
+    }
+    public static void makeHeap(int values[]){
+        for (int i=0; i<values.length;i++){
+            int index=i;
+            while(index!=0){
+                int parent=(index-1)/2;
+                if(values[index]<=values[parent]){
+                    break;
+                }
+               int temp=values[index];
+               values[index]=values[parent];
+               values[parent]=temp;
+               
+               index=parent;
+            }
+        }
+        System.out.println("Heap Form: "+Arrays.toString(values));
+    }
+        public static int removeTopItem (int values[], int count){
+        int result = values[0];
+        values[0] = values [count - 1]; // ultimo elemento de nuestra lista
+        
+        int index = 0;
+        while (true){
+            int child1 = 2 * index + 1;
+            int child2 = 2 * index + 2;
+            
+            if(child1 >= count){
+                child1 = index;
+            }
+            
+            if(child2 >= count){
+                child2 = index;
+            }
+            
+            if(values[index] >= values[child1] && values[index] >= values[child2]){
+                break;
+            }
+            int swapChild = child1;
+            if(values[child2] > values[child1]){
+                swapChild = child2;
+            }
+            
+            int temp = values[index];
+            values[index] = values[swapChild];
+            values[swapChild] = temp;
+            
+            index = swapChild;
+            }
+        return result;
+        }
+    public static void heapSort(int arr[]){
+       
+        makeHeap(arr);
+        int x=arr[arr.length-1];       
+        for(int i=arr.length-1;i>0;i--){
+            
+            int temp=arr[0];
+            arr[0]=arr[i];
+            arr[i]=temp;
+          
+            removeTopItem(arr,i);
+           
+        }
+        arr[1]=x;
+        System.out.println(Arrays.toString(arr));
+      
     }
     
     
