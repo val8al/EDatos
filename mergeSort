@@ -1,0 +1,49 @@
+public class Main {
+
+    public static void main(String[] args) {
+    int uArray[] = {2,6,1,7,8,10,3,5,4,9};
+    int scratch[] = new int[uArray.length];
+    mergeSort(uArray, scratch, 0, uArray.length - 1);
+        System.out.println(Arrays.toString(uArray));
+    }
+    
+    public static void mergeSort(int[] values,int[] scratch, int start, int end){
+        if(start>=end){
+            return;
+        }
+        int midpoint=(start+end)/2;
+        
+        mergeSort(values,scratch,start,midpoint);
+        mergeSort(values,scratch,midpoint+1,end);
+        
+        int left=start;
+        int right=midpoint+1;
+        int scratchIndex=left;
+        
+        while(left<=midpoint&&right<=end){
+            if(values[left]<=values[right]){
+                scratch[scratchIndex]=values[left];
+                left++;
+            }
+            else{
+                scratch[scratchIndex]=values[right];
+                right=right+1;
+            }
+            scratchIndex++;
+            
+        }
+        for(int i=left;i<=midpoint;i++){
+            scratch[scratchIndex]=values[i];
+            scratchIndex++;
+        }
+        for(int i=right;i<=end;i++){
+            scratch[scratchIndex]=values[i];
+            scratchIndex++;
+        }
+        for(int i=start;i<=end;i++){
+            values[i]=scratch[i];
+        }
+        
+    }
+    
+}
