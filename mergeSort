@@ -47,3 +47,9 @@ public class Main {
     }
     
 }
+/*transformar LinkedList a array 
+ String[] array = linkedlist.toArray(new String[linkedlist.size()]);
+ transformar array a LinkedList
+ LinkedList ll = new LinkedList(Arrays.asList(sa))
+ */
+ 
