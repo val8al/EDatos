@@ -1,0 +1,17 @@
+package ExamenFinal;
+import java.util.Random;
+/**
+ *
+ * @author Home
+ */
+public class item {
+    int peso;
+    int valor;
+    int ganancia=peso/valor;
+    
+    public item(){
+        Random rnd=new Random(25);
+        peso=rnd.nextInt(25);
+        valor=rnd.nextInt(25);
+    }
+}
