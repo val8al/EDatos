@@ -1,0 +1,141 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package ExamenFinal;
+import java.util.EmptyStackException;
+import java.util.LinkedList;
+import java.util.Stack;
+import java.util.Random;
+/**
+ *
+ * @author Home
+ */
+public class Main {
+    
+    public static void main(String[] args) {
+        //System.out.println(cleanString("f**k!"));
+        //System.out.println(mystery(3,3));
+        //Creando objetos aleatorios "item"
+        
+    }
+    //Ejercicio 5
+    public static String cleanString(String str){
+        String newStr="";
+        for(int i=0;i<str.length();i++){
+            if(Character.isAlphabetic(str.charAt(i))){
+               newStr+=str.charAt(i);
+               
+            }
+        }
+        return newStr.toUpperCase();
+    }
+    
+    //Ejercicio 8
+    public static LinkedList<Integer> union(LinkedList<Integer> list1,LinkedList<Integer> list2){
+        LinkedList<Integer> newLi=list1;
+        LinkedList<Integer> l2copy=list2;
+        while(!l2copy.isEmpty()){
+            newLi.add(l2copy.pop());
+        }
+        return newLi;
+    }
+    //Ejercicio 7
+    public static int mystery(int m,int n){
+        if(m==0){
+            return n+1;
+        }
+        else if(m>0&&n==0){
+            return mystery(m-1,1);
+        }
+        else if(m>0&&n>0){
+            return mystery(m-1,mystery(m,n-1));
+        }
+        else return 0;
+    }
+    //Ejercicio 9
+    public static void insertInorder(LinkedList<Integer> lst, int element){
+        for(int i=0;i<lst.size();i++){
+            if(element>lst.getFirst()){
+                lst.add(i, element);
+            }
+        }
+    }
+    //Ejercicio 12
+    public static int get(Stack<Integer> stack, int i){
+        Stack<Integer> newSt=null;
+        for(int j=0;j<i-1;j++){
+            if(stack.empty()){
+                throw new EmptyStackException();
+            }
+            newSt.push(stack.pop());
+            
+        }
+        int res=stack.peek();
+        //restorar la stack original
+        while(!newSt.empty()){
+            stack.push(newSt.pop());
+        }
+        return res;
+    }
+    //ejercicio mochila crear items
+    public static item[] generarItems(){
+        item[] objetos=new item[100];
+        for(int i=0;i<100;i++){
+            item it=new item();
+            objetos[i]=it;
+        }
+        System.out.println("Se ha creado un arreglo con 100 items");
+        return objetos;
+    }
+    //ejercicio mochila algoritmo greedy
+    public static LinkedList<item> greedyMochila(){
+       int pesoMochila=0;
+       int itera=0;
+       item[] arr=generarItems();
+       
+       LinkedList<item> solucion = new LinkedList<>();
+       while(pesoMochila<100){
+           for(int i=0;i<arr.length;i++){
+               for(int j=i;j<arr.length;j++){
+                   if(arr[j].ganancia>arr[i].ganancia){//método para calcular ganancia como variable de clase
+                       item token=arr[j];
+                       arr[j]=arr[i];
+                       arr[i]=token;
+                   }
+               }
+           }
+           solucion.add(arr[itera]);
+           pesoMochila+=arr[itera].peso;
+           itera++;
+       }
+        System.out.println(solucion.toString());
+       return solucion;
+    }
+    //algoritmo mochila de manera aleatoeria
+    public static LinkedList<item> randPack(){
+        Random rnd = new Random();
+        item[] arr= generarItems();
+        int max=0;
+        
+        LinkedList<item> mochila=new LinkedList<>();
+        Stack<LinkedList> stck = new Stack<>();
+        while(mochila.size()!=100){
+          mochila.add(arr[rnd.nextInt(100)]);
+        }
+        int valor=0;
+        for(int i=0;i<mochila.size();i++){
+            valor+=mochila.get(i).ganancia;
+            
+        }
+        if(valor>max){
+            max=valor;
+        }
+        
+        
+        return mochila;
+    }
+    
+  
+}
